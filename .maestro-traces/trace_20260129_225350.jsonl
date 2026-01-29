@@ -1,0 +1,1 @@
+{"timestamp": "2026-01-29T22:59:31.885922", "event_type": "stage_complete", "data": {"timestamp": "2026-01-29T22:59:31.885922", "stage": "analyze", "success": true, "consults_used": 1, "elapsed_ms": 4.856348037719727, "output_summary": "{'provider': 'gemini', 'content': '', 'ok': False, 'elapsed_ms': 1.743316650390625, 'structured': None}", "error": null}}

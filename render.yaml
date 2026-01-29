@@ -3,18 +3,20 @@ services:
     name: moltbot
     runtime: docker
     plan: starter
-    healthCheckPath: /health
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    dockerCommand: node dist/index.js gateway --bind lan --port 10000 --allow-unconfigured --force
     envVars:
-      - key: PORT
-        value: "8080"
-      - key: SETUP_PASSWORD
-        sync: false
+      - key: CLAWDBOT_GATEWAY_PORT
+        value: "10000"
       - key: CLAWDBOT_STATE_DIR
         value: /data/.clawdbot
       - key: CLAWDBOT_WORKSPACE_DIR
         value: /data/workspace
       - key: CLAWDBOT_GATEWAY_TOKEN
         generateValue: true
+      - key: NODE_ENV
+        value: production
     disk:
       name: moltbot-data
       mountPath: /data
