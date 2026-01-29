@@ -38,4 +38,4 @@ RUN mkdir -p /data/.clawdbot /data/workspace && chown -R node:node /data
 # Security hardening: Run as non-root user
 USER node
 
-CMD ["node", "dist/index.js", "gateway", "--bind", "lan", "--port", "10000", "--allow-unconfigured", "--force"]
+CMD ["node", "dist/index.js", "gateway", "--bind", "lan", "--port", "10000", "--allow-unconfigured"]
