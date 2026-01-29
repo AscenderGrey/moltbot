@@ -32,10 +32,8 @@ RUN pnpm ui:build
 
 ENV NODE_ENV=production
 
-# Render mounts /data as root — ensure the node user can write state + workspace
-RUN mkdir -p /data/.clawdbot /data/workspace && chown -R node:node /data
+# Entrypoint handles /data permissions at runtime (Render mounts disk as root)
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
-# Security hardening: Run as non-root user
-USER node
-
-CMD ["node", "dist/index.js", "gateway", "--bind", "lan", "--port", "10000", "--allow-unconfigured"]
+ENTRYPOINT ["/entrypoint.sh"]
